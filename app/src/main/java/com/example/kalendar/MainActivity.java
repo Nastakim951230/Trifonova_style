@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         zero = findViewById(R.id.zero);
         one = findViewById(R.id.one);
         two = findViewById(R.id.two);
-        fri = findViewById(R.id.fri);
+        fri = findViewById(R.id.four);
         four = findViewById(R.id.four);
         five = findViewById(R.id.five);
         six = findViewById(R.id.six);
@@ -57,10 +57,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         nine = findViewById(R.id.nine);
         plus = findViewById(R.id.plus);
         minus = findViewById(R.id.minus);
-        ymnogit = findViewById(R.id.ymnoqenie);
-        delenie = findViewById(R.id.delenie);
-        clear = findViewById(R.id.delet);
-        ravno = findViewById(R.id.ravno);
+        ymnogit = findViewById(R.id.multiply);
+        delenie = findViewById(R.id.divide);
+        clear = findViewById(R.id.clear);
+        ravno = findViewById(R.id.equals);
 
 
         zero.setOnClickListener(this);
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.zero:
             case R.id.one:
             case R.id.two:
-            case R.id.fri:
+            case R.id.three:
             case R.id.four:
             case R.id.five:
             case R.id.six:
@@ -112,8 +112,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.plus:
             case R.id.minus:
-            case R.id.ymnoqenie:
-            case R.id.delenie:
+            case R.id.multiply:
+            case R.id.divide:
                 Button button1 = (Button) view;
                 chose = button1.getText().toString();
                 if (act == button1.getText().toString()) {
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
 
-            case R.id.ravno:
+            case R.id.equals:
                 float num1 = Float.valueOf(firstNumber.getText().toString());
                 float num2 = Float.valueOf(secondNumber.getText().toString());
                 switch (chose) {
@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         break;
                 }
                 break;
-            case R.id.delet:
+            case R.id.clear:
                 firstNumber.setText("");
                 secondNumber.setText("");
                 result.setText("");
