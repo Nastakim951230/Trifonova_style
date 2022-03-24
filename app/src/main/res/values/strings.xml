@@ -16,4 +16,11 @@
     <string name="equals">=</string>
     <string name="clear">C</string>
     <string name="multiply">X</string>
+    <string name="pow">x^y</string>
+    <string name="sqrt">√x</string>
+    <string name="sin">sin</string>
+    <string name="cos">cos</string>
+
+    <string name="pr">Простая операция</string>
+    <string name="sr">Сложная операция</string>
 </resources>

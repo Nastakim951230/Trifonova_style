@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class str_2 extends AppCompatActivity implements View.OnClickListener {
     TextView firstNumber;
     TextView secondNumber;
     TextView result;
@@ -23,13 +23,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button seven;
     Button eight;
     Button nine;
-    Button plus;
-    Button minus;
-    Button ymnogit;
-    Button delenie;
+    Button sin;
+    Button cos;
+    Button pow;
+    Button sqrt;
     Button clear;
     Button ravno;
-    Button secondWindows;
+    Button firstWindows;
 
     String act;
     boolean fnum;
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_math_page2);
 
         act = "";
         fnum = true;
@@ -58,13 +58,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         seven = findViewById(R.id.seven);
         eight = findViewById(R.id.eight);
         nine = findViewById(R.id.nine);
-        plus = findViewById(R.id.plus);
-        minus = findViewById(R.id.minus);
-        ymnogit = findViewById(R.id.multiply);
-        delenie = findViewById(R.id.divide);
+        sqrt = findViewById(R.id.sqrt);
+        sin = findViewById(R.id.sin);
+        cos = findViewById(R.id.cos);
+        pow = findViewById(R.id.pow);
         clear = findViewById(R.id.clear);
         ravno = findViewById(R.id.equals);
-        secondWindows = findViewById(R.id.secondWindows);
+        firstWindows = findViewById(R.id.firstWindows);
+
 
 
         zero.setOnClickListener(this);
@@ -77,16 +78,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         seven.setOnClickListener(this);
         eight.setOnClickListener(this);
         nine.setOnClickListener(this);
-        plus.setOnClickListener(this);
-        minus.setOnClickListener(this);
-        ymnogit.setOnClickListener(this);
-        delenie.setOnClickListener(this);
+        pow.setOnClickListener(this);
+        sin.setOnClickListener(this);
+        cos.setOnClickListener(this);
+        sqrt.setOnClickListener(this);
         clear.setOnClickListener(this);
         ravno.setOnClickListener(this);
-        secondWindows.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, str_2.class);
+        firstWindows.setOnClickListener(view -> {
+            Intent intent = new Intent(str_2.this, MainActivity.class);
             startActivity(intent);
         });
+
 
     }
 
@@ -117,41 +119,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
 
-            case R.id.plus:
-            case R.id.minus:
-            case R.id.multiply:
+            case R.id.pow:
+            case R.id.sqrt:
+            case R.id.sin:
             case R.id.divide:
                 Button button1 = (Button) view;
-                chose = button1.getText().toString();
-                if (act == button1.getText().toString()) {
-                    act = button1.getText().toString();
-                    if (!fnum) {
-                        fnum = !fnum;
-                    }
-                } else {
-                    fnum = !fnum;
-                }
+                act = button1.getText().toString();
+                fnum = !fnum;
                 break;
-
             case R.id.equals:
-                float num1 = Float.valueOf(firstNumber.getText().toString());
-                float num2 = Float.valueOf(secondNumber.getText().toString());
-                switch (chose) {
-                    case ("+"):
-                        float resPlus = num1 + num2;
-                        result.setText(String.valueOf(resPlus));
+                float num1;
+                if(firstNumber.getText().toString() == "") num1 = 0;
+                else num1 = Float.valueOf(firstNumber.getText().toString());
+                float num2;
+                if(secondNumber.getText().toString() == "") num2 = 0;
+                else num2 = Float.valueOf(secondNumber.getText().toString());
+                switch (act) {
+                    case ("x^y"):
+                        double resPow = Math.pow(num1, num2);
+                        result.setText(String.valueOf(resPow));
                         break;
-                    case ("-"):
-                        float resMinus = num1 - num2;
-                        result.setText(String.valueOf(resMinus));
+                    case ("√x"):
+                        double resSqrt = Math.pow(num1, (1/num2));
+                        result.setText(String.valueOf(resSqrt));
                         break;
-                    case ("X"):
-                        float resMultiply = num1 * num2;
-                        result.setText(String.valueOf(resMultiply));
+                    case ("sin"):
+                        double resSin = Math.sin(num1);
+                        result.setText(String.valueOf(resSin));
                         break;
-                    case ("/"):
-                        float resDivide = num1 / num2;
-                        result.setText(String.valueOf(resDivide));
+                    case ("cos"):
+                        double resCos = Math.cos(num1);
+                        result.setText(String.valueOf(resCos));
                         break;
                 }
                 break;
@@ -161,8 +159,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 result.setText("");
                 fnum = true;
                 break;
-
-
 
 
 
